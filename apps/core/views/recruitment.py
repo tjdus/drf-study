@@ -18,10 +18,10 @@ class RecruitmentListView(APIView):
             return Response(RecruitmentSerializer(recruitment).data, status=201)
         return Response(serializer.errors, status=400)
 
-class RecruitmentDetailView(APIView):
+git class RecruitmentDetailView(APIView):
     def get_object(self, pk):
         return get_object_or_404(
-            Recruitment.objects.select_related('created_by'),  # 예시: created_by가 User 모델을 참조
+            Recruitment.objects.select_related('created_by').prefetch_related('recruitment_field_set'),
             pk=pk
         )
 
