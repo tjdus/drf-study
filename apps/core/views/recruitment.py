@@ -43,3 +43,5 @@ class RecruitmentDetailView(APIView):
         recruitment = self.get_object(pk)
         recruitment.delete()
         return Response(status=204)
+    
+# Test
